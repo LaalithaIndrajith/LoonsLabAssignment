@@ -1,0 +1,126 @@
+<body class="align-items-center">
+  <div class="container-fluid text-center">
+    <div class="jumbotron text-center">
+      <h1>Zomato</h1>
+      <h3>World Largest and Most convenient Restaurant Network</h3>
+
+      <div id="search_inputGroup" class="h-100 row align-items-center">
+        <div class="input-group mb-3 col-5" style="margin: 0px auto">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="City Name"
+            aria-label="City Name"
+            aria-describedby="button-addon2"
+            [(ngModel)]="cityName"
+          />
+          <div class="input-group-append">
+            <button
+              class="btn btn-info"
+              type="button"
+              id="button-addon2"
+              (click)="clickSearch()"
+            >
+              Search
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="contentToConvert">
+
+      <div class="text-center mb-5 " *ngIf="cityName !== ''">
+        <h4>
+          Restaurants near to
+          <span class="text-info text-center"> <br />{{ cityName }}</span>
+        </h4>
+
+      </div>
+      <div >
+        <div
+          id="Search_results"
+          *ngFor="let restaurant of restaurants"
+
+        >
+
+        <div class="row">
+          <div class="col-10">
+              <div class="card mb-5 shadow ">
+                  <div class="row no-gutters">
+                    <div class="col-md-4">
+                      <img
+                        [src]="restaurant.restaurant.thumb"
+                        class="card-img"
+                        alt="..."
+                      />
+                    </div>
+                    <div class="col-md-8">
+                      <div class="card-header">
+                        <h6 class="card-title">{{ restaurant.restaurant.name }}</h6>
+                      </div>
+                      <div class="card-body">
+                        <p class="card-text" id="rest_details">
+                          {{ restaurant.restaurant.location.address }}
+                        </p>
+                        <p class="card-text" id="rest_details">
+                          {{ restaurant.restaurant.location.locality }}
+                        </p>
+                        <p class="card-text">
+                          <small class="text-muted"
+                            >Opens : {{ restaurant.restaurant.timings }}
+                          </small>
+                        </p>
+                        <button id="goToWebsite" class="btn  btn-primary">Go to Website </button>
+                      </div>
+                      <div class="card-footer bg-transparent ">{{ restaurant.restaurant.phone_numbers }}</div>
+                    </div>
+                  </div>
+                </div>
+          </div>
+
+
+        </div>
+        </div>
+      </div>
+
+      <button id="Print" (click)=" genaratePdfDetails()" class="btn btn-warning ">
+          Download PDF
+        </button>
+    </div>
+  </div>
+</body>
+
+<div style="margin-top: -200000px" id="Content_to_Print">
+    <div class="text-center mx-5 p-5" *ngIf="cityName !== ''">
+      <h2>Zomato</h2>
+      <h2 id="PrintText">Near-by Restaurants in "{{ cityName }}"</h2>
+    </div>
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+              <th scope="col">Restaurant Name</th>
+              <th scope="col">Address</th>
+
+              <th scope="col">Contact no</th>
+            </tr>
+          </thead>
+          <tbody>
+              <tr *ngFor="let restaurant of restaurants">
+
+                  <td>{{ restaurant.restaurant.name }}</td>
+                  <td>{{ restaurant.restaurant.location.address }}</td>
+                  <td>{{ restaurant.restaurant.phone_numbers }}</td>
+                </tr>
+          </tbody>
+        <!-- <ul *ngFor="let restaurant of restaurants">
+            <li>
+              <h5>{{ restaurant.restaurant.name }}</h5>
+            </li>
+            <li> {{ restaurant.restaurant.location.address }}</li>
+
+            <li>{{ restaurant.restaurant.phone_numbers }}</li>
+          </ul> -->
+    </table>
+
+  </div>

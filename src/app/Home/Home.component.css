@@ -1,0 +1,32 @@
+body {
+  background-image: url("../../assets/Home3.jpg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100%;
+
+}
+
+#content{
+  position: relative;
+  top: 200px;
+  color: aliceblue;
+  text-shadow: 0px 4px 8px rgba(0, 0, 0, 0.4), 0px 9px 14px rgba(0, 0, 0, 0.2),
+    0px 12px 23px rgba(0, 0, 0, 0.1);
+
+}
+
+h1{
+  font-family: Alisandra Demo ;
+  font-size: 150px;
+}
+
+button{
+  margin-top: 50px;
+}
+
+#PrintText{
+  font-family:Tahoma;
+}
+
+
